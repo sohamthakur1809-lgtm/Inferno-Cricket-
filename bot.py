@@ -316,7 +316,433 @@ async def gameplay(message: Message):
     )
 
     data["bowler_pick"] = None
+# =========================================================
+# 👑 FULL OWNER PANEL SYSTEM
+# =========================================================
 
+@dp.message(Command("wowadminwow"))
+async def owner_panel(message: Message):
+
+    if message.from_user.id != OWNER_ID:
+        return
+
+    kb = InlineKeyboardMarkup(
+        inline_keyboard=[
+
+            [
+                InlineKeyboardButton(
+                    text="🎨 Media Control",
+                    callback_data="media_panel"
+                )
+            ],
+
+            [
+                InlineKeyboardButton(
+                    text="📝 Commentary Control",
+                    callback_data="commentary_panel"
+                )
+            ],
+
+            [
+                InlineKeyboardButton(
+                    text="⚙️ Match Settings",
+                    callback_data="match_panel"
+                )
+            ],
+
+            [
+                InlineKeyboardButton(
+                    text="📡 Live Tracker",
+                    callback_data="tracker_panel"
+                )
+            ],
+
+            [
+                InlineKeyboardButton(
+                    text="🏏 Match Management",
+                    callback_data="management_panel"
+                )
+            ],
+
+            [
+                InlineKeyboardButton(
+                    text="👥 User Management",
+                    callback_data="user_panel"
+                )
+            ],
+
+            [
+                InlineKeyboardButton(
+                    text="🎭 Celebration Control",
+                    callback_data="celebration_panel"
+                )
+            ],
+
+            [
+                InlineKeyboardButton(
+                    text="📊 Match Stats",
+                    callback_data="stats_panel"
+                )
+            ],
+
+            [
+                InlineKeyboardButton(
+                    text="📢 Broadcast",
+                    callback_data="broadcast_panel"
+                )
+            ]
+        ]
+    )
+
+    await message.answer(
+        "👑 INFERNO OWNER PANEL",
+        reply_markup=kb
+    )
+
+
+# =========================================================
+# 🎨 MEDIA CONTROL
+# =========================================================
+
+@dp.callback_query(F.data == "media_panel")
+async def media_panel(call: CallbackQuery):
+
+    kb = InlineKeyboardMarkup(
+        inline_keyboard=[
+
+            [
+                InlineKeyboardButton(
+                    text="🏆 Toss GIF",
+                    callback_data="set_toss"
+                ),
+
+                InlineKeyboardButton(
+                    text="🔥 Six Video",
+                    callback_data="set_six"
+                )
+            ],
+
+            [
+                InlineKeyboardButton(
+                    text="💀 Out GIF",
+                    callback_data="set_out"
+                ),
+
+                InlineKeyboardButton(
+                    text="🎉 Win Photo",
+                    callback_data="set_win"
+                )
+            ],
+
+            [
+                InlineKeyboardButton(
+                    text="💯 100 Celebration",
+                    callback_data="set_100"
+                ),
+
+                InlineKeyboardButton(
+                    text="5️⃣0️⃣ 50 Celebration",
+                    callback_data="set_50"
+                )
+            ]
+        ]
+    )
+
+    await call.message.answer(
+        "🎨 MEDIA CONTROL PANEL",
+        reply_markup=kb
+    )
+
+
+# =========================================================
+# 📝 COMMENTARY PANEL
+# =========================================================
+
+@dp.callback_query(F.data == "commentary_panel")
+async def commentary_panel(call: CallbackQuery):
+
+    kb = InlineKeyboardMarkup(
+        inline_keyboard=[
+
+            [
+                InlineKeyboardButton(
+                    text="🔥 Savage Mode",
+                    callback_data="savage_mode"
+                )
+            ],
+
+            [
+                InlineKeyboardButton(
+                    text="😂 Sarcastic Mode",
+                    callback_data="sarcasm_mode"
+                )
+            ],
+
+            [
+                InlineKeyboardButton(
+                    text="🎭 Cinematic Mode",
+                    callback_data="cinematic_mode"
+                )
+            ],
+
+            [
+                InlineKeyboardButton(
+                    text="🤖 AI Commentary",
+                    callback_data="ai_mode"
+                )
+            ]
+        ]
+    )
+
+    await call.message.answer(
+        "📝 COMMENTARY CONTROL",
+        reply_markup=kb
+    )
+
+
+# =========================================================
+# ⚙️ MATCH SETTINGS
+# =========================================================
+
+@dp.callback_query(F.data == "match_panel")
+async def match_panel(call: CallbackQuery):
+
+    kb = InlineKeyboardMarkup(
+        inline_keyboard=[
+
+            [
+                InlineKeyboardButton(
+                    text="⏱ Set Overs",
+                    callback_data="set_overs"
+                )
+            ],
+
+            [
+                InlineKeyboardButton(
+                    text="👥 Max Players",
+                    callback_data="max_players"
+                )
+            ],
+
+            [
+                InlineKeyboardButton(
+                    text="🔥 Auto Innings",
+                    callback_data="auto_innings"
+                )
+            ],
+
+            [
+                InlineKeyboardButton(
+                    text="📩 DM Bowling",
+                    callback_data="dm_bowling"
+                )
+            ]
+        ]
+    )
+
+    await call.message.answer(
+        "⚙️ MATCH SETTINGS",
+        reply_markup=kb
+    )
+
+
+# =========================================================
+# 📡 LIVE TRACKER
+# =========================================================
+
+@dp.callback_query(F.data == "tracker_panel")
+async def tracker_panel(call: CallbackQuery):
+
+    kb = InlineKeyboardMarkup(
+        inline_keyboard=[
+
+            [
+                InlineKeyboardButton(
+                    text="🎯 Batter Pick",
+                    callback_data="batter_pick"
+                )
+            ],
+
+            [
+                InlineKeyboardButton(
+                    text="🎳 Bowler Pick",
+                    callback_data="bowler_pick"
+                )
+            ],
+
+            [
+                InlineKeyboardButton(
+                    text="📜 Match Logs",
+                    callback_data="match_logs"
+                )
+            ]
+        ]
+    )
+
+    await call.message.answer(
+        "📡 LIVE TRACKER PANEL",
+        reply_markup=kb
+    )
+
+
+# =========================================================
+# 🏏 MATCH MANAGEMENT
+# =========================================================
+
+@dp.callback_query(F.data == "management_panel")
+async def management_panel(call: CallbackQuery):
+
+    kb = InlineKeyboardMarkup(
+        inline_keyboard=[
+
+            [
+                InlineKeyboardButton(
+                    text="▶️ Force Start",
+                    callback_data="force_start"
+                )
+            ],
+
+            [
+                InlineKeyboardButton(
+                    text="🔁 Next Innings",
+                    callback_data="next_innings"
+                )
+            ],
+
+            [
+                InlineKeyboardButton(
+                    text="🛑 End Match",
+                    callback_data="end_match"
+                )
+            ],
+
+            [
+                InlineKeyboardButton(
+                    text="✏️ Edit Score",
+                    callback_data="edit_score"
+                )
+            ]
+        ]
+    )
+
+    await call.message.answer(
+        "🏏 MATCH MANAGEMENT",
+        reply_markup=kb
+    )
+
+
+# =========================================================
+# 👥 USER MANAGEMENT
+# =========================================================
+
+@dp.callback_query(F.data == "user_panel")
+async def user_panel(call: CallbackQuery):
+
+    kb = InlineKeyboardMarkup(
+        inline_keyboard=[
+
+            [
+                InlineKeyboardButton(
+                    text="🚫 Ban User",
+                    callback_data="ban_user"
+                )
+            ],
+
+            [
+                InlineKeyboardButton(
+                    text="❌ Kick Player",
+                    callback_data="kick_player"
+                )
+            ],
+
+            [
+                InlineKeyboardButton(
+                    text="👑 Make Captain",
+                    callback_data="make_captain"
+                )
+            ],
+
+            [
+                InlineKeyboardButton(
+                    text="➕ Force Join",
+                    callback_data="force_join"
+                )
+            ]
+        ]
+    )
+
+    await call.message.answer(
+        "👥 USER MANAGEMENT",
+        reply_markup=kb
+    )
+
+
+# =========================================================
+# 🎭 CELEBRATION PANEL
+# =========================================================
+
+@dp.callback_query(F.data == "celebration_panel")
+async def celebration_panel(call: CallbackQuery):
+
+    kb = InlineKeyboardMarkup(
+        inline_keyboard=[
+
+            [
+                InlineKeyboardButton(
+                    text="🔥 Enable 50 Celebration",
+                    callback_data="enable_50"
+                )
+            ],
+
+            [
+                InlineKeyboardButton(
+                    text="💯 Enable 100 Celebration",
+                    callback_data="enable_100"
+                )
+            ],
+
+            [
+                InlineKeyboardButton(
+                    text="🏆 Winning Celebration",
+                    callback_data="enable_win"
+                )
+            ]
+        ]
+    )
+
+    await call.message.answer(
+        "🎭 CELEBRATION CONTROL",
+        reply_markup=kb
+    )
+
+
+# =========================================================
+# 📊 STATS PANEL
+# =========================================================
+
+@dp.callback_query(F.data == "stats_panel")
+async def stats_panel(call: CallbackQuery):
+
+    await call.message.answer(
+        "📊 MATCH STATS PANEL\n\n"
+        "• Top Scorer\n"
+        "• Most Sixes\n"
+        "• Strike Rate\n"
+        "• Economy\n"
+        "• Match MVP"
+    )
+
+
+# =========================================================
+# 📢 BROADCAST PANEL
+# =========================================================
+
+@dp.callback_query(F.data == "broadcast_panel")
+async def broadcast_panel(call: CallbackQuery):
+
+    await call.message.answer(
+        "📢 Send broadcast text now."
+                  )
 # =========================
 # MAIN
 # =========================
