@@ -138,28 +138,6 @@ async def join_b(call: CallbackQuery):
     await call.answer("🔥 Joined Team B")
 
 # =========================
-# OWNER PANEL
-# =========================
-
-@dp.message(Command("wowadminwow"))
-async def owner_panel(message: Message):
-
-    if message.from_user.id != OWNER_ID:
-        return
-
-    await message.answer(
-        (
-            "👑 <b>INFERNO OWNER PANEL</b>\n\n"
-            "🎨 Media Control\n"
-            "📝 Commentary Control\n"
-            "⚙ Match Settings\n"
-            "📡 Live Tracker\n"
-            "🏏 Match Management\n"
-            "👥 User Management"
-        )
-    )
-
-# =========================
 # SET OVERS
 # =========================
 
